@@ -69,6 +69,16 @@ class Agent:
     def train_short_memory(self, state, action, reward, next_state, done):
         self.train_step(state, action, reward, next_state, done)
 
+    def save(self):
+        print("saving")
+        torch.save(self.model.state_dict(), "AiModel/snakemodel")
+
+    def load(self):
+        state_dict = torch.load("AiModel/snakemodel")
+        # 2. On injecte les poids dans l'architecture existante
+        self.model.load_state_dict(state_dict)
+
+
 
 
     def train_step(self, state, action, reward, next_state, done):

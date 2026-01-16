@@ -74,7 +74,7 @@ class Game:
                 self.screen.blit(pygame.transform.scale(self.display, (self.screen.get_width(), self.screen.get_height()),), (0,0))
 
                 pygame.display.update()
-                self.clock.tick(100)
+                self.clock.tick(10)
 
             return reward,death
 
@@ -113,10 +113,8 @@ def test():
 
 
 
-
-
-
-
+if __name__ == '__main__':
+    test()
 
 
 

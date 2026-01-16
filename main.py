@@ -1,7 +1,8 @@
 from game import *
 from Trainer import *
 import matplotlib.pyplot as plt
-
+from torch.utils.tensorboard import SummaryWriter
+writer = SummaryWriter('runs/mon_experience_1')
 plt.ion()
 
 
@@ -49,11 +50,12 @@ def trainq(episode):
         record.append(episodescore)
         if i %10 == 0:
             print(str(i) + ": " + str(episodescore))
-        if i%100 == 0:
-            plt.clf()
-            x = np.arange(len(record))
-            plt.plot(x, record)
-            plt.pause(.01)
+            agent.save()
+
+
+        writer.add_scalar('Loss/train', episodescore, i)
+
+
         if eps > 0.01:
             eps -= 0.005  # On enlève 0.05% à chaque partie
         else:
