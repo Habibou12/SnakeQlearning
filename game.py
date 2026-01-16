@@ -6,7 +6,7 @@ import pygame
 import numpy as np
 from Trainer import *
 
-from utils import *
+
 
 pygame.init()
 pygame.display.set_caption("2048 Game")
